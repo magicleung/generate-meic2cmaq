@@ -105,7 +105,7 @@ def GenCMAQ(GDCRO, MTCRO, BSEMIS, EMISFILE, SCALEFAC):
         grid_in = {'lon': em['longitude'].values, 'lat': np.flip(em['latitude'].values, axis=0)}
         grid_out = {'lon':  lon.data, 'lat':lat.data}
         
-        # 创建regridder并对‘z_latlon’进行插值
+        # spatial interpolation 
         regridder = xe.Regridder(grid_in, grid_out, 'nearest_s2d', reuse_weights=False)
         emi = regridder(em['z'])
         
